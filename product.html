@@ -3,13 +3,14 @@
   <script>
 window.dataLayer = window.dataLayer || [];
 window.dataLayer.push({
-    "env_work": 'production',
+        "env_work": 'production',
     "env_channel": 'mobile',
     "env_template": 'product',
     "page_name": 'Assiette plate en porcelaine Plissé - Ensemble à table',
     "page_context": 'produit',
     "product_name": 'Assiette plate en porcelaine Plissé', //libellé court
     "product_gtin": '3050910349901', //Gtin
+    "product_id": '66a4f99c-b332-4c02-861d-3a1f64829ba9', //ID EAT
     "product_ref": '214226BL1S4', //Référence interne fournisseur 
     "product_eshop": 'https://shop.pillivuyt.fr/products/assiette-plate-en-porcelaine-pillivuyt-plisse-par-4?taxon_id=182', //Url eshop
     "product_isaservice": 'no', // case service ( oui si coché)
@@ -21,16 +22,27 @@ window.dataLayer.push({
     "product_prodsite": 'Pillivuyt', // Site de production
     "product_segment": 'Ustensiles de Cuisine et Art de la Table', // Segment Description
     "product_family": 'Art de la Table', // Family Description
-    "product_class": 'Vaisselle', // Vaisselle Description
+    "product_class": 'Vaisselle', // Class Description
     "product_brick": 'Assiette', // Brick Description
-    "product_attribute":["a faire"], // Attributs
-    "product_shape":'', // Forme
-    "product_finish":'Brillant', // Finition
-    "product_color":'Blanc', // Couleur
+    "product_attribute": [{
+            "core": "Category",
+            "value": "Asiette plate"
+        },
+        {
+            "core": "Matiere",
+            "value": "Procelaine"
+        }
+    ], // Attributs
+    "product_shape": '', // Forme
+    "product_finish": 'Brillant', // Finition
+    "product_color": 'Blanc', // Couleur
     "product_priceTTC": '16,95', // Prix TTC
     "product_priceHT": '14,12 ', // Prix HT
     "product_taxe": '2,83 ', // Taxe
     "product_currency": 'EUR ', // Devise
+    "product_instock": '1', // En stock ou non
+    "product_quantity": '1', // quantité disponible si dispo
+    "product_reservation": true // Si le produit est dispo à la reservation.
 });
 </script>
 
