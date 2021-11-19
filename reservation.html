@@ -9,7 +9,7 @@ window.dataLayer.push({
     "env_template": 'funnel',
     "page_name": 'Confirmation du client - Ensemble à Table',
     "funnel_name": 'Reservation',
-    "funnel_step": '2',
+    "funnel_step": '1',
       "user_logged": '1',
    "funnel_stepname": 'Confirmation du client'
    
@@ -18,7 +18,8 @@ window.dataLayer.push({
 	  <script>
 function datareserv() {
     window.dataLayer.push({
-        "event": 'reservation',
+	  "funnel_name": 'Reservation',
+   	 "funnel_step": '3',
         "reservation_detail": {
             "reservation_statut": "Confirmation du client",
             "reservation_id": "C9642727",
