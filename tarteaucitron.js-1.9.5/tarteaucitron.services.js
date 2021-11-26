@@ -32,22 +32,21 @@ tarteaucitron.services.iframe = {
     }
 };
 // simpleanalytics
-tarteaucitron.services.netheluim = {
-    "key": "netheluim",
+tarteaucitron.services.nethelium = {
+    "key": "nethelium",
     "type": "analytic",
-    "name": "netheluim Analytics",
-    "uri": "https://docs",
+    "name": "Nethelium Connect",
+    "uri": "https://net-helium.fr/",
     "needConsent": true,
     "cookies": [],
     "js": function() {
         "use strict";
         window.dataLayer = window.dataLayer || [];
-        window.dataLayer = window.dataLayer || [];
 
         function gtag() {
             dataLayer.push(arguments);
         }
-        gtag('consent', 'default', {
+        gtag('consent', 'update', {
             'ad_storage': 'granted',
             'analytics_storage': 'granted'
         });
@@ -58,12 +57,11 @@ tarteaucitron.services.netheluim = {
     },
     "fallback": function() {
         window.dataLayer = window.dataLayer || [];
-        window.dataLayer = window.dataLayer || [];
 
         function gtag() {
             dataLayer.push(arguments);
         }
-        gtag('consent', 'update', {
+        gtag('consent', 'default', {
             'ad_storage': 'denied',
             'analytics_storage': 'granted'
         });
