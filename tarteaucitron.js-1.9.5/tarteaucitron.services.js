@@ -37,29 +37,38 @@ tarteaucitron.services.netheluim = {
     "type": "analytic",
     "name": "netheluim Analytics",
     "uri": "https://docs",
-    "needConsent": false,
+    "needConsent": true,
     "cookies": [],
     "js": function() {
         "use strict";
         window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({
-            'gtm.start': new Date().getTime(),
-            event: 'gtm.js'
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('consent', 'default', {
+            'ad_storage': 'granted',
+            'analytics_storage': 'granted'
         });
-        window.dataLayer.push({
-            "event": 'ok'
+        dataLayer.push({
+            'event': 'activate'
         });
         tarteaucitron.addScript('https://www.googletagmanager.com/gtm.js?id=GTM-NN9H2DJ');
     },
     "fallback": function() {
-        "use strict";
         window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({
-            'gtm.start': new Date().getTime(),
-            event: 'gtm.js'
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('consent', 'update', {
+            'ad_storage': 'denied',
+            'analytics_storage': 'granted'
         });
-        window.dataLayer.push({
-            "event": 'refus'
+        dataLayer.push({
+            'event': 'deactivate'
         });
         tarteaucitron.addScript('https://www.googletagmanager.com/gtm.js?id=GTM-NN9H2DJ');
     }
