@@ -10,6 +10,39 @@
         tarteaucitron.user.abtastyID = 'id';
         (tarteaucitron.job = tarteaucitron.job || []).push('abtasty');
         </script>
+        <script type="text/javascript">
+  tarteaucitron.services.netheluim = {
+  "key": "netheluim",
+  "type": "analytics",
+  "name": "Netheluim",
+  "needConsent": false,
+    "js": function () {
+        "use strict";
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+            'gtm.start': new Date().getTime(),
+            event: 'gtm.js'
+        });
+        window.dataLayer.push({
+            event: 'accepted'
+        });
+        tarteaucitron.addScript('https://www.googletagmanager.com/gtm.js?id=' + "GTM6XXX");
+    },
+    "fallback": function () {
+  "use strict";
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+            'gtm.start': new Date().getTime(),
+            event: 'gtm.js'
+        });
+        window.dataLayer.push({
+            event: 'anonyme'
+        });
+         tarteaucitron.addScript('https://www.googletagmanager.com/gtm.js?id=' + "GTM6XXX");
+}
+};
+(tarteaucitron.job = tarteaucitron.job || []).push('netheluim');
+</script>
 <h1>Tarte</h1>
  
 </body>
