@@ -46,11 +46,14 @@ tarteaucitron.services.netheluim = {
             'gtm.start': new Date().getTime(),
             event: 'gtm.js'
         });
+        window.dataLayer.push({
+    "event": 'ok'});
 
         tarteaucitron.addScript('https://www.googletagmanager.com/gtm.js?id=GTM6XXX');
     },
         "fallback": function () {
         "use strict";
+        window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({
     "event": 'refus'});
     }
