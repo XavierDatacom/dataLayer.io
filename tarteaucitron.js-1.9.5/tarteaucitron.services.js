@@ -42,6 +42,10 @@ tarteaucitron.services.nethelium = {
     "js": function() {
         "use strict";
         window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+            'gtm.start': new Date().getTime(),
+            event: 'gtm.js'
+        });
 
         function gtag() {
             dataLayer.push(arguments);
@@ -57,7 +61,10 @@ tarteaucitron.services.nethelium = {
     },
     "fallback": function() {
         window.dataLayer = window.dataLayer || [];
-
+        window.dataLayer.push({
+            'gtm.start': new Date().getTime(),
+            event: 'gtm.js'
+        });
         function gtag() {
             dataLayer.push(arguments);
         }
