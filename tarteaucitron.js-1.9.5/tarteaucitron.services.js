@@ -32,6 +32,26 @@ tarteaucitron.services.iframe = {
     }
 };
 
+// neth
+  tarteaucitron.services.netheluim = {
+  "key": "netheluim",
+  "type": "analytics",
+  "name": "Netheluim",
+  "needConsent": true,
+    "js": function () {
+        "use strict";
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+            'gtm.start': new Date().getTime(),
+            event: 'gtm.js'
+        });
+        window.dataLayer.push({
+            event: 'accepted'
+        });
+        tarteaucitron.addScript('https://www.googletagmanager.com/gtm.js?id=' + "GTM6XXX");
+    }
+};
+
 // pinterestpixel
 tarteaucitron.services.pinterestpixel = {
     "key": "pinterestpixel",
