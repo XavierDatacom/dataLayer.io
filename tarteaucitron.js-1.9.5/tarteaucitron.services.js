@@ -49,7 +49,7 @@ tarteaucitron.services.nethelium = {
 
         function gtag() {
             dataLayer.push(arguments);
-        }
+        };
         gtag('consent', 'update', {
             'ad_storage': 'granted',
             'analytics_storage': 'granted'
@@ -67,7 +67,7 @@ tarteaucitron.services.nethelium = {
         });
         function gtag() {
             dataLayer.push(arguments);
-        }
+        };
         gtag('consent', 'default', {
             'ad_storage': 'denied',
             'analytics_storage': 'granted'
