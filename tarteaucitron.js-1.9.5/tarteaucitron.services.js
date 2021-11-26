@@ -39,7 +39,7 @@ tarteaucitron.services.netheluim = {
     "uri": "https://docs",
     "needConsent": false,
     "cookies": [],
-    "js": function () {
+    "js": function() {
         "use strict";
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({
@@ -47,15 +47,21 @@ tarteaucitron.services.netheluim = {
             event: 'gtm.js'
         });
         window.dataLayer.push({
-    "event": 'ok'});
-
-        tarteaucitron.addScript('https://www.googletagmanager.com/gtm.js?id=GTM6XXX');
+            "event": 'ok'
+        });
+        tarteaucitron.addScript('https://www.googletagmanager.com/gtm.js?id=GTM-NN9H2DJ');
     },
-        "fallback": function () {
+    "fallback": function() {
         "use strict";
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({
-    "event": 'refus'});
+            'gtm.start': new Date().getTime(),
+            event: 'gtm.js'
+        });
+        window.dataLayer.push({
+            "event": 'refus'
+        });
+        tarteaucitron.addScript('https://www.googletagmanager.com/gtm.js?id=GTM-NN9H2DJ');
     }
 };
 
