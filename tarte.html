@@ -30,18 +30,7 @@
             event: 'accepted'
         });
         tarteaucitron.addScript('https://www.googletagmanager.com/gtm.js?id=' + "GTM6XXX");
-    },
-    "fallback": function () {
-  "use strict";
-        window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({
-            'gtm.start': new Date().getTime(),
-            event: 'gtm.js'
-        });
-        window.dataLayer.push({
-            event: 'anonyme'
-        });
-}
+    }
 };
 (tarteaucitron.job = tarteaucitron.job || []).push('netheluim');
 
