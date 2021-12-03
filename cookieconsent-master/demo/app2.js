@@ -51,17 +51,20 @@ cc.run({
         console.log('onAccept fired ...');
         disableBtn('btn2');
         disableBtn('btn3');
-        window.dataLayer = window.dataLayer || [];
+        if (!cookieconsent.allowedCategory('targeting')) {
+            window.dataLayer = window.dataLayer || [];
         function gtag() {
             dataLayer.push(arguments);
         };
         gtag('consent', 'update', {
-            'ad_storage': 'granted',
+            'ad_storage': 'denied',
             'analytics_storage': 'granted'
         });
         dataLayer.push({
             'event': 'change'
         });
+};
+        
 
         // Delete line below
         document.getElementById('cookie_val') && (document.getElementById('cookie_val').innerHTML = JSON.stringify(cookie, null, 2));
@@ -84,7 +87,7 @@ cc.run({
                     dataLayer.push(arguments);
                 }
 
-                gtag('consent', 'default', {
+                gtag('consent', 'update', {
                     'ad_storage': 'denied',
                     'analytics_storage': 'denied'
                 });
