@@ -1,6 +1,7 @@
 // obtain cookieconsent plugin
 var cc = initCookieConsent();
-window.dataLayer = window.dataLayer || [];
+var cok =cookieconsent.get('level');
+if(cok){window.dataLayer = window.dataLayer || [];
 function gtag() {
             dataLayer.push(arguments);
         };
@@ -10,7 +11,7 @@ function gtag() {
         });
         dataLayer.push({
             'event': 'default'
-        });
+        });}
 // run plugin with config object
 cc.run({
     current_lang: 'en',
