@@ -1,6 +1,16 @@
 // obtain cookieconsent plugin
 var cc = initCookieConsent();
-
+window.dataLayer = window.dataLayer || [];
+function gtag() {
+            dataLayer.push(arguments);
+        };
+        gtag('consent', 'default', {
+            'ad_storage': 'denied',
+            'analytics_storage': 'granted'
+        });
+        dataLayer.push({
+            'event': 'default'
+        });
 // run plugin with config object
 cc.run({
     current_lang: 'en',
@@ -41,6 +51,17 @@ cc.run({
         console.log('onAccept fired ...');
         disableBtn('btn2');
         disableBtn('btn3');
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        };
+        gtag('consent', 'update', {
+            'ad_storage': 'granted',
+            'analytics_storage': 'granted'
+        });
+        dataLayer.push({
+            'event': 'change'
+        });
 
         // Delete line below
         document.getElementById('cookie_val') && (document.getElementById('cookie_val').innerHTML = JSON.stringify(cookie, null, 2));
