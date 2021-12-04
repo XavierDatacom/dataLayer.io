@@ -1,23 +1,12 @@
 // obtain cookieconsent plugin
 var cc = initCookieConsent();
-var cok =cookieconsent.get('level');
-if(!cok){window.dataLayer = window.dataLayer || [];
-function gtag() {
-            dataLayer.push(arguments);
-        };
-        gtag('consent', 'default', {
-            'ad_storage': 'denied',
-            'analytics_storage': 'granted'
-        });
-        dataLayer.push({
-            'event': 'default'
-        });}
+
 // run plugin with config object
 cc.run({
     current_lang: 'en',
     autoclear_cookies: true,                    // default: false
     theme_css: '../src/cookieconsent.css',
-    cookie_name: 'cc_cookie_demo2',             // default: 'cc_cookie'
+    cookie_name: 'privacy',             // default: 'cc_cookie'
     cookie_expiration: 365,                     // default: 182
     page_scripts: true,                         // default: false
     force_consent: true,                        // default: false
