@@ -6,7 +6,7 @@ cc.run({
     current_lang: 'en',
     autoclear_cookies: true,                    // default: false
     theme_css: '../src/cookieconsent.css',
-    cookie_name: 'privacy',             // default: 'cc_cookie'
+    cookie_name: 'cc_cookie_demo2',             // default: 'cc_cookie'
     cookie_expiration: 365,                     // default: 182
     page_scripts: true,                         // default: false
     force_consent: true,                        // default: false
@@ -41,20 +41,6 @@ cc.run({
         console.log('onAccept fired ...');
         disableBtn('btn2');
         disableBtn('btn3');
-        if (!cookieconsent.allowedCategory('targeting')) {
-            window.dataLayer = window.dataLayer || [];
-        function gtag() {
-            dataLayer.push(arguments);
-        };
-        gtag('consent', 'update', {
-            'ad_storage': 'denied',
-            'analytics_storage': 'granted'
-        });
-        dataLayer.push({
-            'event': 'update'
-        });
-};
-        
 
         // Delete line below
         document.getElementById('cookie_val') && (document.getElementById('cookie_val').innerHTML = JSON.stringify(cookie, null, 2));
@@ -77,7 +63,7 @@ cc.run({
                     dataLayer.push(arguments);
                 }
 
-                gtag('consent', 'update', {
+                gtag('consent', 'default', {
                     'ad_storage': 'denied',
                     'analytics_storage': 'denied'
                 });
