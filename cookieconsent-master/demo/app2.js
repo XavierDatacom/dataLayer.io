@@ -45,7 +45,7 @@ cc.run({
         console.log('onAccept fired ...');
         disableBtn('btn2');
         disableBtn('btn3');
-        if (!cc.allowedCategory('targeting')) {
+        if (cc.allowedCategory('targeting')) {
 
                 // Disable gtag ...
                 
