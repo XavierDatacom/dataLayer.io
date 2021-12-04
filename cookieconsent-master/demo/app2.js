@@ -38,8 +38,35 @@ cc.run({
     /* End new options added in v2.4 */
 
     onAccept: function (cookie) {
-        console.log('onAccept fired ...');
-        var t= cc.allowedCategory('analytics');
+        console.log('GTAG GRANTED');
+        if(cc.allowedCategory('targeting')){
+            window.dataLayer = window.dataLayer || [];
+
+                function gtag() {
+                    dataLayer.push(arguments);
+                }
+
+                gtag('consent', 'default', {
+                    'ad_storage': 'granted',
+                    'analytics_storage': 'granted'
+                });
+
+        }
+        else{
+            window.dataLayer = window.dataLayer || [];
+
+                function gtag() {
+                    dataLayer.push(arguments);
+                }
+
+                gtag('consent', 'default', {
+                    'ad_storage': 'denied',
+                    'analytics_storage': 'granted'
+                });
+
+        }
+
+        }
         console.log(t);
         disableBtn('btn2');
         disableBtn('btn3');
@@ -55,10 +82,10 @@ cc.run({
         if (changed_preferences.indexOf('analytics') > -1) {
 
             // If analytics category is disabled ...
-            if (!cc.allowedCategory('analytics')) {
+            if (!cc.allowedCategory('targeting')) {
 
                 // Disable gtag ...
-                console.log('disabling gtag')
+                console.log('GTAG DENIED/GRANTED')
                 window.dataLayer = window.dataLayer || [];
 
                 function gtag() {
@@ -67,7 +94,7 @@ cc.run({
 
                 gtag('consent', 'default', {
                     'ad_storage': 'denied',
-                    'analytics_storage': 'denied'
+                    'analytics_storage': 'granted'
                 });
             }
         }
@@ -119,8 +146,8 @@ cc.run({
                         description: getLoremIpsum(),
                         toggle: {
                             value: 'analytics',
-                            enabled: false,
-                            readonly: false
+                            enabled: true,
+                            readonly: true
                         },
                         cookie_table: [
                             {
