@@ -100,7 +100,7 @@ cc.run({
                  });     
             }                
             }
-        }
+        },
 
 
     languages: {
