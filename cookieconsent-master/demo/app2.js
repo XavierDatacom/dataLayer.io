@@ -16,7 +16,7 @@ if (!cc.get('level')) {
 
                 gtag('consent', 'default', {
                     'ad_storage': 'denied',
-                    'analytics_storage': 'granted',
+                    'analytics_storage': 'denied',
                     'wait_for_update': 500
                 });
                 console.log('chargement defaut gtag');
