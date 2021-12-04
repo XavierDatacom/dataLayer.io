@@ -11,7 +11,7 @@ cc.run({
     page_scripts: true,                         // default: false
     force_consent: true,                        // default: false
 
-     auto_language: browser,                     // default: null; could also be 'browser' or 'document'
+     //auto_language: browser,                     // default: null; could also be 'browser' or 'document'
      autorun: true,                           // default: true
     // delay: 0,                                // default: 0
     // hide_from_bots: false,                   // default: false
