@@ -44,14 +44,15 @@ cc.run({
 
                 function gtag() {
                     dataLayer.push(arguments);
-                }
+                };
 
                 gtag('consent', 'update', {
                     'ad_storage': 'granted',
                     'analytics_storage': 'granted'
                 });
                 window.dataLayer.push({
-                     "event": 'gtm.init_consent'})
+                     "event": 'gtm.init_consent'
+                 });
 
         }
         else{
@@ -59,21 +60,21 @@ cc.run({
 
                 function gtag() {
                     dataLayer.push(arguments);
-                }
+                };
 
                 gtag('consent', 'update', {
                     'ad_storage': 'denied',
                     'analytics_storage': 'granted'
                 });
                 window.dataLayer.push({
-                     "event": 'gtm.init_consent'})        
+                     "event": 'gtm.init_consent'
+                 });        
             }
 
         disableBtn('btn2');
         disableBtn('btn3');
 
-        // Delete line below
-        document.getElementById('cookie_val') && (document.getElementById('cookie_val').innerHTML = JSON.stringify(cookie, null, 2));
+       
     },
 
     onChange: function (cookie, changed_preferences) {
@@ -99,9 +100,8 @@ cc.run({
                 });
                 window.dataLayer.push({
                      "event": 'gtm.init_consent'})        
-            }                
-            }
-                    if (changed_preferences.indexOf('analytics') > -1) {
+            }}                
+            if (changed_preferences.indexOf('analytics') > -1) {
 
             // If analytics category is disabled ...
             if (!cc.allowedCategory('analytics')) {
@@ -122,11 +122,8 @@ cc.run({
                      "event": 'gtm.init_consent'})        
             }                
             }
-        }
+        },
 
-        // Delete line below
-        document.getElementById('cookie_val') && (document.getElementById('cookie_val').innerHTML = JSON.stringify(cookie, null, 2));
-    },
 
     languages: {
         'en': {
