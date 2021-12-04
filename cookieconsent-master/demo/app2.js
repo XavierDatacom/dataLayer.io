@@ -111,8 +111,8 @@ cc.run({
                     role: 'accept_all'      //'accept_selected' or 'accept_all'
                 },
                 secondary_btn: {
-                    text: 'Preferences',
-                    role: 'settings'       //'settings' or 'accept_necessary'
+                    text: 'Reject All',
+                    role: 'accept_necessary'       //'settings' or 'accept_necessary'
                 },
                 revision_message: '<br><br> Dear user, terms and conditions have changed since the last time you visisted!'
             },
