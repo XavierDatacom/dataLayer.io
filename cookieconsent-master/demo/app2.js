@@ -67,7 +67,6 @@ cc.run({
         }
 
         }
-        console.log(t);
         disableBtn('btn2');
         disableBtn('btn3');
 
