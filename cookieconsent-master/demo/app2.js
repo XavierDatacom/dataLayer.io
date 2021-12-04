@@ -1,7 +1,7 @@
 // obtain cookieconsent plugin
 var cc = initCookieConsent();
 var cok =cookieconsent.get('level');
-if(cok){window.dataLayer = window.dataLayer || [];
+if(!cok){window.dataLayer = window.dataLayer || [];
 function gtag() {
             dataLayer.push(arguments);
         };
@@ -62,7 +62,7 @@ cc.run({
             'analytics_storage': 'granted'
         });
         dataLayer.push({
-            'event': 'change'
+            'event': 'update'
         });
 };
         
