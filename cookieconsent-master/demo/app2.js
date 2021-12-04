@@ -63,7 +63,7 @@ cc.run({
         disableBtn('btn3');
 
        
-    }
+    }},
 
     onChange: function (cookie, changed_preferences) {
         console.log('onChange fired ...');
