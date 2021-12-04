@@ -4,22 +4,6 @@ var lorem_ipsum = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed 
 var short_lorem_ipsum = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis exercitation. ';
 var super_short_lorem_ipsum = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit';
 var loaded_clarity = false;
-if(!cc.get("level")){
-                    window.dataLayer = window.dataLayer || [];
-
-                function gtag() {
-                    dataLayer.push(arguments);
-                }
-
-                gtag('consent', 'default', {
-                    'ad_storage': 'denied',
-                    'analytics_storage': 'granted'
-                });
-                console.log('chargement defaut gtag');
-                window.dataLayer.push({
-    "event":"gtm.init_consent" 
-});
-}
 
 // run plugin with config object
 cc.run({
