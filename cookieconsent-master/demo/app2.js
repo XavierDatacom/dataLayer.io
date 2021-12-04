@@ -20,6 +20,9 @@ if (!cc.get('level')) {
                     'wait_for_update': 500
                 });
                 console.log('chargement defaut gtag');
+                window.dataLayer.push({
+    "event":"gtm.init_consent" 
+});
             }
 
 // run plugin with config object
