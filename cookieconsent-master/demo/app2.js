@@ -146,7 +146,7 @@ cc.run({
                         description: getLoremIpsum(),
                         toggle: {
                             value: 'analytics',
-                            enabled: true,
+                            enabled: false,
                             readonly: false
                         },
                         cookie_table: [
@@ -174,8 +174,7 @@ cc.run({
                         toggle: {
                             value: 'targeting',
                             enabled: false,
-                            readonly: false,
-                            reload: 'on_disable'            // New option in v2.4, check readme.md
+                            readonly: false           // New option in v2.4, check readme.md
                         },
                         cookie_table: [
                             {
