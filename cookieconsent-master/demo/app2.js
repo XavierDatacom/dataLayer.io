@@ -3,7 +3,7 @@ var cc = initCookieConsent();
 
 // run plugin with config object
 cc.run({
-    current_lang: 'en',
+    current_lang: 'fr',
     autoclear_cookies: true,                    // default: false
     theme_css: '../src/cookieconsent.css',
     cookie_name: 'cc_cookie_demo2',             // default: 'cc_cookie'
