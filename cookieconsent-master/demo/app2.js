@@ -518,8 +518,8 @@ cc.run({
                 }
             },
         }
-    };
-});
+    });
+
 
 
 function getLoremIpsum() {
