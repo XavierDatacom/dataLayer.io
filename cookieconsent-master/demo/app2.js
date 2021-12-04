@@ -4,7 +4,23 @@ var lorem_ipsum = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed 
 var short_lorem_ipsum = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis exercitation. ';
 var super_short_lorem_ipsum = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit';
 var loaded_clarity = false;
-// run plugin with config object
+if (!cc.get('level')) {
+
+                // Disable gtag ...
+                
+                window.dataLayer = window.dataLayer || [];
+
+                function gtag() {
+                    dataLayer.push(arguments);
+                }
+
+                gtag('consent', 'default', {
+                    'ad_storage': 'denied',
+                    'analytics_storage': 'granted',
+                    'wait_for_update': 500
+                });
+                console.log('chargement defaut gtag');
+            }
 
 // run plugin with config object
 cc.run({
@@ -46,6 +62,37 @@ cc.run({
         console.log('onAccept fired ...');
         disableBtn('btn2');
         disableBtn('btn3');
+        if (!cc.allowedCategory('targeting')) {
+
+                // Disable gtag ...
+                
+                window.dataLayer = window.dataLayer || [];
+
+                function gtag() {
+                    dataLayer.push(arguments);
+                }
+
+                gtag('consent', 'update', {
+                    'ad_storage': 'denied',
+                    'analytics_storage': 'granted'
+                });
+                gtag('set', 'url_passthrough', true);
+                gtag('set', 'ads_data_redaction', true);
+                console.log('disabling ads gtag');
+            }else{
+                console.log('ok gtag')
+                window.dataLayer = window.dataLayer || [];
+
+                function gtag() {
+                    dataLayer.push(arguments);
+                }
+
+                gtag('consent', 'update', {
+                    'ad_storage': 'granted',
+                    'analytics_storage': 'granted'
+                });
+                console.log('update gtag');
+            }
 
         // Delete line below
         document.getElementById('cookie_val') && (document.getElementById('cookie_val').innerHTML = JSON.stringify(cookie, null, 2));
@@ -55,23 +102,26 @@ cc.run({
         console.log('onChange fired ...');
 
         // If analytics category's status was changed ...
-        if (changed_preferences.indexOf('analytics') > -1) {
+        if (changed_preferences.indexOf('targeting') > -1) {
 
             // If analytics category is disabled ...
-            if (!cc.allowedCategory('analytics')) {
+            if (!cc.allowedCategory('targeting')) {
 
                 // Disable gtag ...
-                console.log('disabling gtag')
+            
                 window.dataLayer = window.dataLayer || [];
 
                 function gtag() {
                     dataLayer.push(arguments);
                 }
 
-                gtag('consent', 'default', {
+                gtag('consent', 'update', {
                     'ad_storage': 'denied',
-                    'analytics_storage': 'denied'
+                    'analytics_storage': 'granted'
                 });
+                gtag('set', 'url_passthrough', true);
+                gtag('set', 'ads_data_redaction', true);
+                console.log('disabling ads gtagchange');
             }
         }
 
@@ -379,7 +429,8 @@ cc.run({
                             toggle : {
                                 value : 'necessary',
                                 enabled : true,
-                                readonly: true                          //cookie categories with readonly=true are all treated as "necessary cookies"
+                                readonly: true,
+                                reload : "on_disable"                          //cookie categories with readonly=true are all treated as "necessary cookies"
                             }
                         },{
                             title : "Performance and analytics cookies",
