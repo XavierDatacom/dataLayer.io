@@ -46,10 +46,12 @@ cc.run({
                     dataLayer.push(arguments);
                 }
 
-                gtag('consent', 'default', {
+                gtag('consent', 'update', {
                     'ad_storage': 'granted',
                     'analytics_storage': 'granted'
                 });
+                window.dataLayer.push({
+                     "event": 'gtm.init_consent'})
 
         }
         else{
@@ -59,12 +61,13 @@ cc.run({
                     dataLayer.push(arguments);
                 }
 
-                gtag('consent', 'default', {
+                gtag('consent', 'update', {
                     'ad_storage': 'denied',
                     'analytics_storage': 'granted'
                 });
-
-        }
+                window.dataLayer.push({
+                     "event": 'gtm.init_consent'})        
+            }
 
         disableBtn('btn2');
         disableBtn('btn3');
@@ -77,23 +80,47 @@ cc.run({
         console.log('onChange fired ...');
 
         // If analytics category's status was changed ...
-        if (changed_preferences.indexOf('analytics') > -1) {
+        if (changed_preferences.indexOf('targeting') > -1) {
 
             // If analytics category is disabled ...
             if (!cc.allowedCategory('targeting')) {
 
                 // Disable gtag ...
-                console.log('GTAG DENIED/GRANTED')
+                console.log('GTAG DENIED/GRANTED');
                 window.dataLayer = window.dataLayer || [];
 
                 function gtag() {
                     dataLayer.push(arguments);
                 }
 
-                gtag('consent', 'default', {
+                gtag('consent', 'update', {
                     'ad_storage': 'denied',
                     'analytics_storage': 'granted'
                 });
+                window.dataLayer.push({
+                     "event": 'gtm.init_consent'})        
+            }                
+            }
+                    if (changed_preferences.indexOf('analytics') > -1) {
+
+            // If analytics category is disabled ...
+            if (!cc.allowedCategory('analytics')) {
+
+                // Disable gtag ...
+                console.log('GTAG DENIED/DENIED');
+                window.dataLayer = window.dataLayer || [];
+
+                function gtag() {
+                    dataLayer.push(arguments);
+                }
+
+                gtag('consent', 'update', {
+                    'ad_storage': 'denied',
+                    'analytics_storage': 'denied'
+                });
+                window.dataLayer.push({
+                     "event": 'gtm.init_consent'})        
+            }                
             }
         }
 
@@ -145,7 +172,7 @@ cc.run({
                         toggle: {
                             value: 'analytics',
                             enabled: true,
-                            readonly: true
+                            readonly: false
                         },
                         cookie_table: [
                             {
