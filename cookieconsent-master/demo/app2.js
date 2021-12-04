@@ -74,97 +74,451 @@ cc.run({
         document.getElementById('cookie_val') && (document.getElementById('cookie_val').innerHTML = JSON.stringify(cookie, null, 2));
     },
 
-    languages: {
-        'en': {
-            consent_modal: {
-                title: 'Hello traveller, it\'s cookie time!',
-                description: 'Our website uses essential cookies to ensure its proper operation and tracking cookies to understand how you interact with it. The latter will be set only after consent. <a href="#privacy-policy" class="cc-link">Privacy policy</a>',
-                primary_btn: {
-                    text: 'Accept all',
-                    role: 'accept_all'      //'accept_selected' or 'accept_all'
-                },
-                secondary_btn: {
-                    text: 'Preferences',
-                    role: 'settings'       //'settings' or 'accept_necessary'
-                },
-                revision_message: '<br><br> Dear user, terms and conditions have changed since the last time you visisted!'
-            },
-            settings_modal: {
-                title: 'Cookie settings',
-                save_settings_btn: 'Save current selection',
-                accept_all_btn: 'Accept all',
-                reject_all_btn: 'Reject all',
-                close_btn_label: 'Close',
-                cookie_table_headers: [
-                    {col1: 'Name'},
-                    {col2: 'Domain'},
-                    {col3: 'Expiration'}
-                ],
-                blocks: [
-                    {
-                        title: 'Cookie usage',
-                        description: getLoremIpsum() + ' <a href="#" class="cc-link">Privacy Policy</a>.'
-                    }, {
-                        title: 'Strictly necessary cookies',
-                        description: getLoremIpsum() + getLoremIpsum() + "<br><br>" + getLoremIpsum() + getLoremIpsum(),
-                        toggle: {
-                            value: 'necessary',
-                            enabled: true,
-                            readonly: true  //cookie categories with readonly=true are all treated as "necessary cookies"
-                        }
-                    }, {
-                        title: 'Analytics & Performance cookies',
-                        description: getLoremIpsum(),
-                        toggle: {
-                            value: 'analytics',
-                            enabled: false,
-                            readonly: false
-                        },
-                        cookie_table: [
-                            {
-                                col1: '^_ga',
-                                col2: 'yourdomain.com',
-                                col3: 'description ...',
-                                is_regex: true
-                            },
-                            {
-                                col1: '_gid',
-                                col2: 'yourdomain.com',
-                                col3: 'description ...',
-                            },
-                            {
-                                col1: '_my_cookie',
-                                col2: 'yourdomain.com',
-                                col3: 'test cookie with custom path ...',
-                                path: '/demo'       // needed for autoclear cookies
-                            }
-                        ]
-                    }, {
-                        title: 'Targeting & Advertising cookies',
-                        description: 'If this category is deselected, <b>the page will reload when preferences are saved</b>... <br><br>(demo example with reload option enabled, for scripts like microsoft clarity which will re-set cookies and send beacons even after the cookies have been cleared by the cookieconsent\'s autoclear function)',
-                        toggle: {
-                            value: 'targeting',
-                            enabled: false,
-                            readonly: false,
-                            reload: 'on_disable'            // New option in v2.4, check readme.md
-                        },
-                        cookie_table: [
-                            {
-                                col1: '^_cl',               // New option in v2.4: regex (microsoft clarity cookies)
-                                col2: 'yourdomain.com',
-                                col3: 'These cookies are set by microsoft clarity',
-                                // path: '/',               // New option in v2.4
-                                is_regex: true              // New option in v2.4
-                            }
-                        ]
-                    }, {
-                        title: 'More information',
-                        description: getLoremIpsum() + ' <a class="cc-link" href="https://orestbida.com/contact/">Contact me</a>.',
+    languages : {
+            'en' : {    
+                consent_modal : {
+                    title :  "Hello, would you like a cookie ?",
+                    description :  short_lorem_ipsum + '<button type="button" data-cc="c-settings" class="cc-link">Manage preferences</button>',
+                    primary_btn: {
+                        text: 'Accept',
+                        role: 'accept_all'              //'accept_selected' or 'accept_all'
+                    },
+                    secondary_btn: {
+                        text : 'Reject',
+                        role : 'accept_necessary'       //'settings' or 'accept_necessary'
                     }
-                ]
-            }
+                },
+                settings_modal : {
+                    title : '<div>Cookie settings</div><div aria-hidden="true" style="font-size: .8em; font-weight: 400; color: #687278; margin-top: 5px;">Powered by <a tabindex="-1" aria-hidden="true" href="https://github.com/orestbida/cookieconsent/">cookie-consent</a></div>',
+                    save_settings_btn : "Save settings",
+                    accept_all_btn : "Accept all",
+                    reject_all_btn : "Reject all",
+                    close_btn_label: "Close",
+                    cookie_table_headers : [
+                        {col1: "Name" }, 
+                        {col2: "Domain" }, 
+                        {col3: "Description" }
+                    ],
+                    blocks : [
+                        {
+                            title : "Cookie usage",
+                            description: short_lorem_ipsum + ' <a href="#" class="cc-link">Privacy policy</a>'
+                        },{
+                            title : "Strictly necessary cookies",
+                            description: 'These cookies are essential for the proper functioning of my website. Without these cookies, the website would not work properly',
+                            toggle : {
+                                value : 'necessary',
+                                enabled : true,
+                                readonly: true                          //cookie categories with readonly=true are all treated as "necessary cookies"
+                            }
+                        },{
+                            title : "Performance and analytics cookies",
+                            description: 'These cookies collect information about how you use the website, which pages you visited and which links you clicked on. All of the data is anonymized and cannot be used to identify you',
+                            toggle : {
+                                value : 'analytics',
+                                enabled : false,
+                                readonly: false
+                            },
+                            cookie_table: [
+                                {
+                                    col1: '_ga',
+                                    col2: 'orestbida.com',
+                                    col3: super_short_lorem_ipsum,
+                                    path: window.location.pathname
+                                },
+                                {
+                                    col1: '_gat',
+                                    col2: 'orestbida.com',
+                                    col3: super_short_lorem_ipsum,
+                                    path: window.location.pathname
+                                },
+                                {
+                                    col1: '_gid',
+                                    col2: 'orestbida.com',
+                                    col3: super_short_lorem_ipsum,
+                                    path: window.location.pathname
+                                }
+                            ]
+                        },{
+                            title : "Targeting and Advertising cookies",
+                            description: lorem_ipsum,
+                            toggle : {
+                                value : 'targeting',
+                                enabled : false,
+                                readonly: false,
+                                reload: 'on_disable'
+                            },
+                            cookie_table: [
+                                {
+                                    col1: '^_cl',
+                                    col2: 'orestbida.com',
+                                    col3: 'All cookies starting with "_cl" are set by <a href="https://clarity.microsoft.com/terms">microsoft clarity</a>',
+                                    is_regex: true,
+                                }
+                            ]
+                        },{
+                            title : "More information",
+                            description: 'For any queries in relation to my policy on cookies and your choices, please <a class="cc-link" href="https://orestbida.com/contact/">contact me</a>.',
+                        }
+                    ]
+                }
+            },
+            'it' : {    
+                consent_modal : {
+                    title :  "Salve, vuole un biscottino?",
+                    description :  short_lorem_ipsum + '<button type="button" data-cc="c-settings" class="cc-link">Manage preferences</button>',
+                    primary_btn: {
+                        text: 'Accetta',
+                        role: 'accept_all'              //'accept_selected' or 'accept_all'
+                    },
+                    secondary_btn: {
+                        text : 'Rifiuta',
+                        role : 'accept_necessary'               //'settings' or 'accept_necessary'
+                    }
+                },
+                settings_modal : {
+                    title : '<div>Impostazioni dei cookies</div><div aria-hidden="true" style="font-size: .8em; font-weight: 400; color: #687278; margin-top: 5px;">Powered by <a tabindex="-1" aria-hidden="true" href="https://github.com/orestbida/cookieconsent/">cookie-consent</a></div>',
+                    save_settings_btn : "Salva preferenze",
+                    accept_all_btn : "Accetta tutto",
+                    reject_all_btn : "Rifiuta tutto",
+                    close_btn_label: "Chiudi",
+                    cookie_table_headers : [
+                        {col1: "Name" }, 
+                        {col2: "Domain" }, 
+                        {col3: "Description" }
+                    ],
+                    blocks : [
+                        {
+                            title : "Cookie usage",
+                            description: short_lorem_ipsum + ' <a href="#" class="cc-link">Privacy policy</a>'
+                        },{
+                            title : "Strictly necessary cookies",
+                            description: 'These cookies are essential for the proper functioning of my website. Without these cookies, the website would not work properly',
+                            toggle : {
+                                value : 'necessary',
+                                enabled : true,
+                                readonly: true                          //cookie categories with readonly=true are all treated as "necessary cookies"
+                            }
+                        },{
+                            title : "Performance and analytics cookies",
+                            description: 'These cookies collect information about how you use the website, which pages you visited and which links you clicked on. All of the data is anonymized and cannot be used to identify you',
+                            toggle : {
+                                value : 'analytics',
+                                enabled : false,
+                                readonly: false
+                            },
+                            cookie_table: [
+                                {
+                                    col1: '_ga',
+                                    col2: 'orestbida.com',
+                                    col3: super_short_lorem_ipsum,
+                                    path: window.location.pathname
+                                },
+                                {
+                                    col1: '_gat',
+                                    col2: 'orestbida.com',
+                                    col3: super_short_lorem_ipsum,
+                                    path: window.location.pathname
+                                },
+                                {
+                                    col1: '_gid',
+                                    col2: 'orestbida.com',
+                                    col3: super_short_lorem_ipsum,
+                                    path: window.location.pathname
+                                }
+                            ]
+                        },{
+                            title : "Targeting and Advertising cookies",
+                            description: lorem_ipsum,
+                            toggle : {
+                                value : 'targeting',
+                                enabled : false,
+                                readonly: false,
+                                reload: 'on_disable'
+                            },
+                            cookie_table: [
+                                {
+                                    col1: '^_cl',
+                                    col2: 'orestbida.com',
+                                    col3: 'All cookies starting with "_cl" are set by <a href="https://clarity.microsoft.com/terms">microsoft clarity</a>',
+                                    is_regex: true
+                                }
+                            ]
+                        },{
+                            title : "More information",
+                            description: 'For any queries in relation to my policy on cookies and your choices, please <a class="cc-link" href="https://orestbida.com/contact/">contact me</a>.',
+                        }
+                    ]
+                }
+            },
+            'de' : {    
+                consent_modal : {
+                    title :  "Hallo, möchtest du einen keks?",
+                    description :  short_lorem_ipsum + '<button type="button" data-cc="c-settings" class="cc-link">Manage preferences</button>',
+                    primary_btn: {
+                        text: 'Akzeptieren',
+                        role: 'accept_all'              //'accept_selected' or 'accept_all'
+                    },
+                    secondary_btn: {
+                        text : 'Ablehnen',
+                        role : 'accept_necessary'               //'settings' or 'accept_necessary'
+                    }
+                },
+                settings_modal : {
+                    title : '<div>Cookie Einstellungen</div><div aria-hidden="true" style="font-size: .8em; font-weight: 400; color: #687278; margin-top: 5px;">Powered by <a tabindex="-1" aria-hidden="true" href="https://github.com/orestbida/cookieconsent/">cookie-consent</a></div>',
+                    save_settings_btn : "Auswahl akzeptieren",
+                    accept_all_btn : "Alle akzeptieren",
+                    reject_all_btn : "Alles ablehnen",
+                    close_btn_label: "Schließen",
+                    cookie_table_headers : [
+                        {col1: "Name" }, 
+                        {col2: "Domain" }, 
+                        {col3: "Description" }
+                    ],
+                    blocks : [
+                        {
+                            title : "Cookie usage",
+                            description: short_lorem_ipsum + ' <a href="#" class="cc-link">Privacy policy</a>'
+                        },{
+                            title : "Strictly necessary cookies",
+                            description: 'These cookies are essential for the proper functioning of my website. Without these cookies, the website would not work properly',
+                            toggle : {
+                                value : 'necessary',
+                                enabled : true,
+                                readonly: true
+                            }
+                        },{
+                            title : "Performance and analytics cookies",
+                            description: 'These cookies collect information about how you use the website, which pages you visited and which links you clicked on. All of the data is anonymized and cannot be used to identify you',
+                            toggle : {
+                                value : 'analytics',
+                                enabled : false,
+                                readonly: false
+                            },
+                            cookie_table: [
+                                {
+                                    col1: '_ga',
+                                    col2: 'orestbida.com',
+                                    col3: super_short_lorem_ipsum,
+                                    path: window.location.pathname
+                                },
+                                {
+                                    col1: '_gat',
+                                    col2: 'orestbida.com',
+                                    col3: super_short_lorem_ipsum,
+                                    path: window.location.pathname
+                                },
+                                {
+                                    col1: '_gid',
+                                    col2: 'orestbida.com',
+                                    col3: super_short_lorem_ipsum,
+                                    path: window.location.pathname
+                                }
+                            ]
+                        },{
+                            title : "Targeting and Advertising cookies",
+                            description: lorem_ipsum,
+                            toggle : {
+                                value : 'targeting',
+                                enabled : false,
+                                readonly: false,
+                                reload: 'on_disable'
+                            },
+                            cookie_table: [
+                                {
+                                    col1: '^_cl',
+                                    col2: 'orestbida.com',
+                                    col3: 'All cookies starting with "_cl" are set by <a href="https://clarity.microsoft.com/terms">microsoft clarity</a>',
+                                    is_regex: true,
+                                    
+                                }
+                            ]
+                        },{
+                            title : "More information",
+                            description: 'For any queries in relation to my policy on cookies and your choices, please <a class="cc-link" href="https://orestbida.com/contact/">contact me</a>.',
+                        }
+                    ]
+                }
+            },
+            'fr' : {    
+                consent_modal : {
+                    title :  "Veux-tu un cookie?",
+                    description :  short_lorem_ipsum + '<button type="button" data-cc="c-settings" class="cc-link">Manage preferences</button>',
+                    primary_btn: {
+                        text: 'J\'accepte',
+                        role: 'accept_all'              //'accept_selected' or 'accept_all'
+                    },
+                    secondary_btn: {
+                        text : 'Refuser',
+                        role : 'accept_necessary'               //'settings' or 'accept_necessary'
+                    }
+                },
+                settings_modal : {
+                    title : '<div>Paramètres des cookies</div><div aria-hidden="true" style="font-size: .8em; font-weight: 400; color: #687278; margin-top: 5px;">Powered by <a tabindex="-1" aria-hidden="true" href="https://github.com/orestbida/cookieconsent/">cookie-consent</a></div>',
+                    save_settings_btn : "Accepter la sélection",
+                    accept_all_btn : "Accepter tout",
+                    reject_all_btn : "Tout rejeter",
+                    close_btn_label: "Fermer",
+                    cookie_table_headers : [
+                        {col1: "Name" }, 
+                        {col2: "Domain" }, 
+                        {col3: "Description" }
+                    ],
+                    blocks : [
+                        {
+                            title : "Cookie usage",
+                            description: short_lorem_ipsum + ' <a href="#" class="cc-link">Privacy policy</a>'
+                        },{
+                            title : "Strictly necessary cookies",
+                            description: 'These cookies are essential for the proper functioning of my website. Without these cookies, the website would not work properly',
+                            toggle : {
+                                value : 'necessary',
+                                enabled : true,
+                                readonly: true                          //cookie categories with readonly=true are all treated as "necessary cookies"
+                            }
+                        },{
+                            title : "Performance and analytics cookies",
+                            description: 'These cookies collect information about how you use the website, which pages you visited and which links you clicked on. All of the data is anonymized and cannot be used to identify you',
+                            toggle : {
+                                value : 'analytics',
+                                enabled : false,
+                                readonly: false
+                            },
+                            cookie_table: [
+                                {
+                                    col1: '_ga',
+                                    col2: 'orestbida.com',
+                                    col3: super_short_lorem_ipsum,
+                                    path: window.location.pathname
+                                },
+                                {
+                                    col1: '_gat',
+                                    col2: 'orestbida.com',
+                                    col3: super_short_lorem_ipsum,
+                                    path: window.location.pathname
+                                },
+                                {
+                                    col1: '_gid',
+                                    col2: 'orestbida.com',
+                                    col3: super_short_lorem_ipsum,
+                                    path: window.location.pathname
+                                }
+                            ]
+                        },{
+                            title : "Targeting and Advertising cookies",
+                            description: lorem_ipsum,
+                            toggle : {
+                                value : 'targeting',
+                                enabled : false,
+                                readonly: false,
+                                reload: 'on_disable'
+                            },
+                            cookie_table: [
+                                {
+                                    col1: '^_cl',
+                                    col2: 'orestbida.com',
+                                    col3: 'All cookies starting with "_cl" are set by <a href="https://clarity.microsoft.com/terms">microsoft clarity</a>',
+                                    is_regex: true
+                                }
+                            ]
+                        },{
+                            title : "More information",
+                            description: 'For any queries in relation to my policy on cookies and your choices, please <a class="cc-link" href="https://orestbida.com/contact/">contact me</a>.',
+                        }
+                    ]
+                }
+            },
+            
+            'es' : {    
+                consent_modal : {
+                    title :  "Te gustaría una galleta?",
+                    description :  short_lorem_ipsum + '<button type="button" data-cc="c-settings" class="cc-link">Manage preferences</button>',
+                    primary_btn: {
+                        text: 'Aceptar',
+                        role: 'accept_all'              //'accept_selected' or 'accept_all'
+                    },
+                    secondary_btn: {
+                        text : 'Rechazar',
+                        role : 'accept_necessary'               //'settings' or 'accept_necessary'
+                    }
+                },
+                settings_modal : {
+                    title : '<div>Configuración de cookies</div><div aria-hidden="true" style="font-size: .8em; font-weight: 400; color: #687278; margin-top: 5px;">Powered by <a tabindex="-1" aria-hidden="true" href="https://github.com/orestbida/cookieconsent/">cookie-consent</a></div>',
+                    save_settings_btn : "Aceptar selección",
+                    accept_all_btn : "Aceptar todo",
+                    reject_all_btn : "Rechazar todo",
+                    close_btn_label: "Cerrar",
+                    cookie_table_headers : [
+                        {col1: "Name" }, 
+                        {col2: "Domain" }, 
+                        {col3: "Description" }
+                    ],
+                    blocks : [
+                        {
+                            title : "Cookie usage",
+                            description: short_lorem_ipsum + ' <a href="#" class="cc-link">Privacy policy</a>'
+                        },{
+                            title : "Strictly necessary cookies",
+                            description: 'These cookies are essential for the proper functioning of my website. Without these cookies, the website would not work properly',
+                            toggle : {
+                                value : 'necessary',
+                                enabled : true,
+                                readonly: true                          //cookie categories with readonly=true are all treated as "necessary cookies"
+                            }
+                        },{
+                            title : "Performance and analytics cookies",
+                            description: 'These cookies collect information about how you use the website, which pages you visited and which links you clicked on. All of the data is anonymized and cannot be used to identify you',
+                            toggle : {
+                                value : 'analytics',
+                                enabled : false,
+                                readonly: false
+                            },
+                            cookie_table: [
+                                {
+                                    col1: '_ga',
+                                    col2: 'orestbida.com',
+                                    col3: super_short_lorem_ipsum,
+                                    path: window.location.pathname
+                                },
+                                {
+                                    col1: '_gat',
+                                    col2: 'orestbida.com',
+                                    col3: super_short_lorem_ipsum,
+                                    path: window.location.pathname
+                                },
+                                {
+                                    col1: '_gid',
+                                    col2: 'orestbida.com',
+                                    col3: super_short_lorem_ipsum,
+                                    path: window.location.pathname
+                                }
+                            ]
+                        },{
+                            title : "Targeting and Advertising cookies",
+                            description: lorem_ipsum,
+                            toggle : {
+                                value : 'targeting',
+                                enabled : false,
+                                readonly: false,
+                                reload: 'on_disable'
+                            },
+                            cookie_table: [
+                                {
+                                    col1: '^_cl',
+                                    col2: 'orestbida.com',
+                                    col3: 'All cookies starting with "_cl" are set by <a href="https://clarity.microsoft.com/terms">microsoft clarity</a>',
+                                    is_regex: true
+                                }
+                            ]
+                        },{
+                            title : "More information",
+                            description: 'For any queries in relation to my policy on cookies and your choices, please <a class="cc-link" href="https://orestbida.com/contact/">contact me</a>.',
+                        }
+                    ]
+                }
+            },
         }
-    }
+    };
 });
 
 
