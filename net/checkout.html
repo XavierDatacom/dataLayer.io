@@ -3,22 +3,30 @@
   <head>
 <script type="text/javascript">
 window.dataLayer = window.dataLayer || [];
-window.dataLayer.push(
-{
-    "event": "addToCart",
+window.dataLayer.push({
+    "pageCategory": "order",
     "ecommerce": {
-        "add": {
+        "currencyCode": "EUR",
+        "checkout": {
+            "actionField": {
+                "step": 1, // de 1 à 4
+                "action": "checkout"
+            },
             "products": [
                 {
-                    "id": "3900-30173",
-                    "quantity": 1,
                     "name": "SPINNER JOGGER - H.SUEDE/DILORCY - TILLEUL/WHITE",
-                    "price": "149"
+                    "id": "3900-30173",
+                    "reference": "LNVTDI0461",
+                    "price": "149",
+                    "category": "Joggers",
+                    "variant": "36, Vert",
+                    "quantity": 1,
+                    "price_tax_exc": "124.17"
                 }
             ]
-        },
-        "currencyCode": "EUR"
-    }
+        }
+    },
+    "event": "checkout",
 });
 </script>
   <!-- Google Tag Manager -->
@@ -26,12 +34,12 @@ window.dataLayer.push(
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-TNL9PHJ');</script>
+})(window,document,'script','dataLayer','GTM-NN9H2DJ');</script>
 <!-- End Google Tag Manager -->
       </head>
 <body>
 
-<h1>Product</h1>
+<h1>Checkout</h1>
  
 </body>
 </html>
