@@ -46,10 +46,7 @@ tarteaucitron.services.nethelium = {
             'gtm.start': new Date().getTime(),
             event: 'gtm.js'
         });
-tarteaucitron.addClickEventToId("tarteaucitronAllAllowed", function () {
-                        console.log("ok");});
-tarteaucitron.addClickEventToId("tarteaucitronAllowed", function () {
-                        console.log("ok");});
+
         function gtag() {
             dataLayer.push(arguments);
         };
@@ -69,6 +66,8 @@ tarteaucitron.addClickEventToId("tarteaucitronAllowed", function () {
             event: 'gtm.js'
         });
 tarteaucitron.addClickEventToId("tarteaucitronAllAllowed", function () {
+                        console.log("ok");});
+tarteaucitron.addClickEventToId("tarteaucitronAllowed", function () {
                         console.log("ok");});
         function gtag() {
             dataLayer.push(arguments);
