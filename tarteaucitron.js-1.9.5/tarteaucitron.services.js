@@ -67,7 +67,7 @@ tarteaucitron.services.nethelium = {
         });
 tarteaucitron.addClickEventToId("tarteaucitronAllAllowed", function () {
                         console.log("ok");});
-tarteaucitron.addClickEventToId("tarteaucitronAllowed", function () {
+tarteaucitron.addClickEventToId("tarteaucitronPersonalize2", function () {
                         console.log("ok");});
         function gtag() {
             dataLayer.push(arguments);
